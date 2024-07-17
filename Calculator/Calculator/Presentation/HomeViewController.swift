@@ -9,20 +9,24 @@ import UIKit
 
 class HomeViewController: UIViewController {
     
+    private let viewModel = HomeViewModel()
+    
     private let incomeTextField = {
         let textField = UITextField()
         textField.translatesAutoresizingMaskIntoConstraints = false
         
         textField.borderStyle = .none
-        textField.layer.borderWidth = 1
+        textField.layer.borderWidth = 1.2
         textField.layer.borderColor = UIColor.cyan.cgColor
         textField.layer.cornerRadius = 8
         textField.backgroundColor = .white
         
-        textField.placeholder = "INCOME"
+        textField.attributedPlaceholder = NSAttributedString(string: Strings.incomeTFPlaceholder, attributes: [.foregroundColor: UIColor.darkGray])
         textField.clearButtonMode = .whileEditing
+        textField.textColor = .black
         
-        textField.keyboardType = .decimalPad
+        textField.keyboardType = .numbersAndPunctuation
+        textField.returnKeyType = .done
         
         let leftPadding = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: textField.frame.height))
         textField.leftView = leftPadding
@@ -41,7 +45,7 @@ class HomeViewController: UIViewController {
         self.setConstraints()
         self.addGestures()
         
-//        self.incomeTextField.becomeFirstResponder()
+        self.incomeTextField.delegate = self
     }
 
     private func setConstraints() {
@@ -70,6 +74,8 @@ extension HomeViewController: UITextFieldDelegate {
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
+        self.viewModel.logReinvestment(income: textField.text)
+        
         return true
     }
     
