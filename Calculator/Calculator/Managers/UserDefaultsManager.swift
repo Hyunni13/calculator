@@ -24,9 +24,11 @@ class UserDefaultsManager {
     }
     
     func register(defaults: [Reinvestment: Int]) {
-        defaults.forEach { key, value in
-            if self.get(key: key) == nil {
-                self.set(key: key, value: value)
+        DispatchQueue.global().async {
+            defaults.forEach { key, value in
+                if self.get(key: key) == nil {
+                    self.set(key: key, value: value)
+                }
             }
         }
     }

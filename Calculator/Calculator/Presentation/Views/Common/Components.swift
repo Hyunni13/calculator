@@ -19,11 +19,12 @@ extension UITextField {
         textField.layer.cornerRadius = 8
         textField.backgroundColor = .white
         
-        textField.attributedPlaceholder = NSAttributedString(string: placeholder, attributes: [.foregroundColor: UIColor.darkGray])
-        textField.clearButtonMode = .whileEditing
+        textField.attributedPlaceholder = NSAttributedString(
+            string: placeholder, attributes: [.foregroundColor: UIColor.darkGray]
+        )
         textField.textColor = .black
         
-        textField.keyboardType = .numbersAndPunctuation
+        textField.keyboardType = keyboard
         textField.returnKeyType = .done
         
         let leftPadding = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: textField.frame.height))

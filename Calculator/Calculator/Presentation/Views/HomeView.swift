@@ -9,9 +9,7 @@ import UIKit
 
 class HomeView: UIView {
     
-    let incomeTextField = UITextField.get(
-        placeholder: Strings.incomeTFPlaceholder, borderColor: .cyan, keyboard: .numbersAndPunctuation
-    )
+    let incomeTextField = UITextField.get(placeholder: Strings.incomeTFPlaceholder, borderColor: .cyan, keyboard: .numberPad)
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -19,6 +17,8 @@ class HomeView: UIView {
     
     override init(frame: CGRect = .zero) {
         super.init(frame: frame)
+        
+        backgroundColor = .white
         
         addSubview(self.incomeTextField)
         
