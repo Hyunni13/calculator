@@ -23,6 +23,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //    }()
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        UserDefaultsManager.shared.register(defaults: [.livingBudget: 1_000_000, .tripBudget: 8_000_000, .purchaseBudget: 10_000_000])
+        
         return true
     }
     

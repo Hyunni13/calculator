@@ -13,26 +13,25 @@ class HomeViewModel {
         let result = self.validateIncome(income: optional)
         
         guard result.isValid else {
-            print("Income을 올바르게 입력해주세요.")
+            print(Strings.incomeGuide)
             return
         }
         
-        let reinvestments = [
-            "안전자산": round(result.income * 0.2),
-            "위험자산": round(result.income * 0.1),
-            "생활비용": round(result.income * 0.05),
-            "여행자금": round(result.income * 0.05),
-            "구매자금": round(result.income * 0.1)
+        let reinvestments: KeyValuePairs<Reinvestment, Int> = [
+            .safeAssets: Int(round(result.income * 0.2)),
+            .riskAssets: Int(round(result.income * 0.1)),
+            .livingBudget: Int(round(result.income * 0.05)),
+            .tripBudget: Int(round(result.income * 0.1)),
+            .purchaseBudget: Int(round(result.income * 0.05))
         ]
-        var sum = 0.0
+        var sum = 0
         
         reinvestments.forEach { purpose, reinvestment in
             sum += reinvestment
-            print("\(purpose): \(reinvestment)")
+            print("\(purpose.rawValue): \(reinvestment)")
         }
-        
         print("====================")
-        print("잔여: \(Int(result.income - sum))")
+        print("잔여: \(Int(result.income) - sum)")
     }
     
     private func validateIncome(income optional: String?) -> (isValid: Bool, income: Double) {
