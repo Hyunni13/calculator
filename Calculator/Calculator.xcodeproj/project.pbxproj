@@ -22,6 +22,7 @@
 		08ED0DE92C4CEB9B0062E120 /* Components.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08ED0DE82C4CEB9B0062E120 /* Components.swift */; };
 		08ED0DEC2C4CF3880062E120 /* UserDefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08ED0DEB2C4CF3880062E120 /* UserDefaultsManager.swift */; };
 		08ED0DF02C4CF4070062E120 /* Reinvestment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08ED0DEF2C4CF4070062E120 /* Reinvestment.swift */; };
+		08ED0DF32C4D37980062E120 /* IntExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08ED0DF22C4D37980062E120 /* IntExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +62,7 @@
 		08ED0DE82C4CEB9B0062E120 /* Components.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Components.swift; sourceTree = "<group>"; };
 		08ED0DEB2C4CF3880062E120 /* UserDefaultsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsManager.swift; sourceTree = "<group>"; };
 		08ED0DEF2C4CF4070062E120 /* Reinvestment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reinvestment.swift; sourceTree = "<group>"; };
+		08ED0DF22C4D37980062E120 /* IntExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,6 +116,7 @@
 				087811C42C47D280002CF328 /* Presentation */,
 				08ED0DEA2C4CF34F0062E120 /* Managers */,
 				08ED0DED2C4CF3D80062E120 /* Enums */,
+				08ED0DF12C4D377E0062E120 /* Extensions */,
 				087811912C47D0CC002CF328 /* AppDelegate.swift */,
 				087811932C47D0CC002CF328 /* SceneDelegate.swift */,
 				0878119D2C47D0CD002CF328 /* Assets.xcassets */,
@@ -183,6 +186,14 @@
 				08ED0DEF2C4CF4070062E120 /* Reinvestment.swift */,
 			);
 			path = Enums;
+			sourceTree = "<group>";
+		};
+		08ED0DF12C4D377E0062E120 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				08ED0DF22C4D37980062E120 /* IntExtension.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -320,6 +331,7 @@
 				087811CB2C4813F5002CF328 /* HomeViewModel.swift in Sources */,
 				0878119C2C47D0CC002CF328 /* Calculator.xcdatamodeld in Sources */,
 				08ED0DE92C4CEB9B0062E120 /* Components.swift in Sources */,
+				08ED0DF32C4D37980062E120 /* IntExtension.swift in Sources */,
 				08ED0DEC2C4CF3880062E120 /* UserDefaultsManager.swift in Sources */,
 				087811C92C481028002CF328 /* Strings.swift in Sources */,
 				087811922C47D0CC002CF328 /* AppDelegate.swift in Sources */,

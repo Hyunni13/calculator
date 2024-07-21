@@ -20,8 +20,6 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = .white
-        
         self.delegate()
         self.addGestures()
     }
@@ -43,13 +41,33 @@ class HomeViewController: UIViewController {
 }
 
 
+// MARK: UITextField
 extension HomeViewController: UITextFieldDelegate {
     
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        textField.resignFirstResponder()
-        self.viewModel.logReinvestment(income: textField.text)
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        guard let incomeString = textField.text else { return }
+        textField.text = String(incomeString.dropLast())
+    }
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        guard let incomeString = textField.text else { return true }
+        let updatedIncomeString = (incomeString as NSString).replacingCharacters(in: range, with: string)
         
-        return true
+        guard let income = Int(updatedIncomeString.replacingOccurrences(of: ",", with: "")) else { return true }
+        textField.text = income.decimalFormatted
+        
+        return false
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        guard let incomeString = textField.text, !incomeString.isEmpty else { return }
+        textField.text = incomeString + "원"
+        
+        let cleanedIncomeString = incomeString.replacingOccurrences(of: ",", with: "")
+        self.viewModel.suggestReinvestment(income: cleanedIncomeString) { suggestion in
+            let mainView = view as! HomeView
+            mainView.suggestionLabel.text = suggestion
+        }
     }
     
 }

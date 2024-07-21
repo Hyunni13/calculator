@@ -9,11 +9,11 @@ import Foundation
 
 class HomeViewModel {
     
-    func logReinvestment(income optional: String?) {
+    func suggestReinvestment(income optional: String?, completion: (String) -> Void) {
         let result = self.validateIncome(income: optional)
         
         guard result.isValid else {
-            print(Strings.incomeGuide)
+            completion(Strings.incomeGuide)
             return
         }
         
@@ -25,13 +25,16 @@ class HomeViewModel {
             .purchaseBudget: Int(round(result.income * 0.05))
         ]
         var sum = 0
+        var components = [String]()
         
         reinvestments.forEach { purpose, reinvestment in
             sum += reinvestment
-            print("\(purpose.rawValue): \(reinvestment)")
+            components.append("\(purpose.rawValue): \(reinvestment.formatDeciaml())")
         }
-        print("====================")
-        print("잔여: \(Int(result.income) - sum)")
+        components.append("====================")
+        components.append("잔여: \((Int(result.income) - sum).formatDeciaml())")
+        
+        completion(components.joined(separator: "\n"))
     }
     
     private func validateIncome(income optional: String?) -> (isValid: Bool, income: Double) {
