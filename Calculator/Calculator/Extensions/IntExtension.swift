@@ -9,11 +9,18 @@ import Foundation
 
 extension Int {
     
-    var decimalFormat: String? {
+    var decimalFormatted: String? {
         let formatter = NumberFormatter()
         formatter.numberStyle = .decimal
         
         return formatter.string(from: NSNumber(value: self))
+    }
+    
+    func formatDeciaml(defaults: String = "") -> String {
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .decimal
+        
+        return formatter.string(from: NSNumber(value: self)) ?? defaults
     }
     
 }

@@ -7,6 +7,22 @@
 
 import UIKit
 
+extension UILabel {
+    
+    static func get(text: String? = nil) -> UILabel {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        
+        label.numberOfLines = 0
+        label.textColor = .black
+        label.text = text
+        
+        return label
+    }
+    
+}
+
+
 extension UITextField {
     
     static func get(placeholder: String, borderColor: UIColor, keyboard: UIKeyboardType) -> UITextField {
